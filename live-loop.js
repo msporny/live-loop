@@ -39,6 +39,9 @@
       liveloop.setupCodePrologue();
       liveloop.setupCodeEpilogue();
       $("#code-body").keyup(liveloop.checkCounter);
+      
+      // display the initial triples
+      liveloop.updateTriples();
    };
 
    liveloop.checkCounter = function(event)
