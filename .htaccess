@@ -1,0 +1,8 @@
+AddHandler mod_python .py
+PythonDebug On
+PythonHandler live-loop
+
+<FilesMatch "(triples|git-update)">
+   SetHandler mod_python
+</FilesMatch>
+

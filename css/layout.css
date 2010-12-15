@@ -74,8 +74,8 @@ padding-bottom: 50px;
 .onblack {
 background: #e9922a;
 color: #fff;
-padding-top: 50px;
-padding-bottom: 30px;
+padding-top: 10px;
+padding-bottom: 10px;
 }
 
 .onblack h2 {
@@ -266,6 +266,11 @@ font-style: italic;
 
 textarea {
 width: 99%;
+}
+
+pre {
+font-size: 1em;
+line-height: 1em;
 }
 
 /* Provide higher res assets for iPhone 4 */

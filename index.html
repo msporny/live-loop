@@ -18,9 +18,10 @@
   <link rel="stylesheet" href="css/smallerscreen.css" media="only screen and (max-width: 1023px)" />
   <link rel="stylesheet" href="css/mobile.css" media="handheld, only screen and (max-width: 767px)" />
   <link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="live-loop.js"></script>
 </head>
-<body>
+<body onload="liveloop.setupUi();">
 
 <div class="titlebar">
    <h1>Live Loop</h1>
@@ -28,8 +29,8 @@
 <div class="container vspacing">
   <div class="row">
     <div class="twelvecol">
-      <h1>Play with RDFa.
-        <span class="subhead">Discover something new.</span></h1>
+      <h1>For Dave Lehn.
+        <span class="subhead">With love and hugs.</span></h1>
     </div>
   </div>
   <div class="row">
@@ -42,7 +43,7 @@ what your markup produces.</p>
   <pre id="code-prologue">&lt;html&gt;</pre>
   <div class="row">
     <form class="twelvecol last">
-      <textarea name="rdfa" rows="15"></textarea>
+      <textarea id="code-body" name="rdfa" rows="15">&lt;p property=&quot;dc:creator&quot;&gt;Alice&lt;/p&gt;</textarea>
     </form>
   </div>
   <pre id="code-epilogue">&lt;/html&gt;</pre>
@@ -51,10 +52,8 @@ what your markup produces.</p>
 <div class="container onblack">
   <div class="row">
     <div class="twelvecol">
-
-      <h2>Your data:</h2>
-        <p>
-        </p>
+      <div id="triple-data">
+      </div>
     </div>
   </div>
 </div>
