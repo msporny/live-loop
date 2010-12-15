@@ -9,7 +9,7 @@
 
    liveloop.generateCodePrologue = function()
    {
-      return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML+RDFa 1.0//EN\" \"http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:dc=\"http://purl.org/dc/terms/\">\n <head>\n  <title>Test Snippet</title>\n </head>\n <body>";
+      return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML+RDFa 1.0//EN\" \"http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:dc=\"http://purl.org/dc/terms/\">\n <head>\n  <title>Test Snippet</title>\n </head>\n <body>\n";
    }
 
    liveloop.setupCodePrologue = function()
@@ -21,7 +21,7 @@
 
    liveloop.generateCodeEpilogue = function()
    {
-      return " </body>\n</html>";
+      return "\n </body>\n</html>";
    }
 
    liveloop.setupCodeEpilogue = function()

@@ -22,7 +22,7 @@ except Exception, e:
 # @param object_type the type for the object in the triple.
 # @param datatype the datatype for the object in the triple.
 # @param language the language for the object in the triple.
-def writeTriple2( \
+def writeTriple( \
     request, subject, predicate, obj, object_type, datatype, language):
     request.write("&lt;%s&gt; &lt;%s&gt; " % (subject, predicate))
     if(object_type == rdfa.RDF_TYPE_IRI):
@@ -46,11 +46,11 @@ def writeTriple2( \
 # @param object_type the type for the object in the triple.
 # @param datatype the datatype for the object in the triple.
 # @param language the language for the object in the triple.
-def defaultTriple2( \
+def defaultTriple( \
     request, subject, predicate, obj, object_type, datatype, language):
 
     request.write("<div class=\"rdfa-default-triple\">")
-    writeTriple2( \
+    writeTriple( \
         request, subject, predicate, obj, object_type, datatype, language)
     request.write("</div>")
 
@@ -65,7 +65,7 @@ def defaultTriple2( \
 # @param object_type the type for the object in the triple.
 # @param datatype the datatype for the object in the triple.
 # @param language the language for the object in the triple.
-def processorTriple2( \
+def processorTriple( \
     request, subject, predicate, obj, object_type, datatype, language):
     
     request.write("<div class=\"rdfa-processor-triple\">")
@@ -83,7 +83,7 @@ def processorTriple2( \
 # @param bufferSize the size of the buffer to return. Returning anything less
 #                   than bufferSize will halt execution after the returned
 #                   buffer has been processed.
-def handleBuffer2(data, bufferSize):
+def handleBuffer(data, bufferSize):
     return data.read()
 
 ##
@@ -106,14 +106,11 @@ def handler(req):
     if(service.find("/live-loop/triples") != -1):
         req.content_type = 'text/html'
         if(req.method == "POST"):
-            document = req.read()
-            liveLoopDir = os.path.dirname(req.canonical_filename)
-            p = subprocess.Popen(["python", "live-loop.py"], 
-                bufsize=4096, stdin=subprocess.PIPE, stdout=subprocess.PIPE, 
-                stderr=subprocess.PIPE, close_fds=True, cwd=liveLoopDir)
-            p.stdin.write(document)
-            (so, se) = p.communicate()
-            req.write(so)
+            parser = rdfa.RdfaParser("http://example.com/sample.html", False)
+            parser.setDefaultGraphTripleHandler(defaultTriple, req)
+            parser.setProcessorGraphTripleHandler(processorTriple, req)
+            parser.setBufferHandler(handleBuffer, req)
+            parser.parse()
         else:
             req.content_type = 'text/plain'
             req.write("""
@@ -138,11 +135,4 @@ curl -d "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?><\!DOCTYPE html PUBLIC \\
             (service,))
 
     return status
-
-if __name__ == "__main__":
-    parser = rdfa.RdfaParser("http://example.com/sample.html")
-    parser.setDefaultGraphTripleHandler(defaultTriple2, sys.stdout)
-    parser.setProcessorGraphTripleHandler(processorTriple2, sys.stdout)
-    parser.setBufferHandler(handleBuffer2, sys.stdin)
-    parser.parse()
 
