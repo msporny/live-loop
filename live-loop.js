@@ -111,8 +111,13 @@
 
       // show and set focus on the prefix editor
       //pe.show();
+      var prefixCount = 0;
+      for(i in liveloop.vocabs) prefixCount++;
       $("#prefix-input").focus();
-      $("#prefix-editor").modal({maxWidth: ($(document).width() / 4) * 3});
+      $("#prefix-editor").modal({
+        maxWidth: ($(document).width() / 4) * 3,
+        minHeight: 210 + (liveloop.getLineHeight() * prefixCount)
+      });
    };
 
    /**
@@ -163,6 +168,21 @@
    }
 
    /**
+    * Retrieve the standard line height for the page.
+    *
+    * @return the standard line height on the page in pixels.
+    */
+   liveloop.getLineHeight = function()
+   {
+      var rval = 10;
+      var div = $('<div style="height: 1em;"></div>').appendTo('body');
+      var rval = div.height();
+      div.remove();
+
+      return rval;
+   }
+
+   /**
     * Performs a check on the prefix editor counter. If the counter hits 0, an 
     * XMLHttpRequest is sent to the server for processing.
     *
@@ -192,11 +212,9 @@
                $("#prefix-loading").hide();
                
                // adjust the size of the prefix editor
-               var div = $('<div style="height: 1em;"></div>').appendTo('body');
-               var em = div.height();
-               div.remove();
                var smcheight = $("#simplemodal-container").height();
-               $("#simplemodal-container").height(smcheight + 2*em);
+               $("#simplemodal-container").height(
+                  smcheight + 2 * liveloop.getLineHeight());
                
                // append to the prefix list
                liveloop.addPrefixListItem(prefix, resolved);
