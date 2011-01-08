@@ -1,9 +1,5 @@
 /* Type & image presets */
 
-img, object, embed {
-margin-bottom: 20px;
-}
-
 body {
 font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 font-size: 14px;
@@ -38,7 +34,6 @@ img {
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
-margin-bottom: 20px;
 }
 
 p, ul, ol, blockquote {

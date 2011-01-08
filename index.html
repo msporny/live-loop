@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/mobile.css" media="handheld, only screen and (max-width: 767px)" />
   <link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="jquery.simplemodal.1.4.1.min.js"></script>
   <script src="live-loop.js"></script>
 </head>
 <body onload="liveloop.setupUi();">
@@ -42,6 +43,15 @@ see the data that your markup produces.</p>
     </div>
   </div>
   <pre id="code-prologue">&lt;html&gt;</pre>
+  <div id="prefix-editor" class="simple-modal-container" style="display: none;">
+     <h1 class="largebutton">Prefix Editor</h1>
+     <p>The prefix editor allows you to add and remove prefixes from the current
+     document. To add a prefix, just type the short name, such as "dc" or "foaf"
+     into the box below and the prefix URL will be automatically filled out for
+     you if it is known. Press the 'Esc' key to close this editor.</p>
+     <div id="prefix-list"></div>
+     <div id="prefix-list-editor"></div>
+  </div>
   <div class="row">
     <form class="twelvecol last">
       <textarea id="code-body" name="rdfa" rows="15">&lt;p property=&quot;dc:creator&quot;&gt;Alice&lt;/p&gt;</textarea>
@@ -50,7 +60,8 @@ see the data that your markup produces.</p>
   <pre id="code-epilogue">&lt;/html&gt;</pre>
 </div>
 
-<img id="loading" style="margin: 2px 2px; float: left; display: none;" src="loading.gif" />
+<img id="triples-loading" style="margin: 2px 2px; float: left; display: none;" 
+   src="loading.gif" />
 
 <div class="container onblack">
   <div class="row">

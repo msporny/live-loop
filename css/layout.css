@@ -25,6 +25,11 @@ font-size: 16px;
 font-size: 12px;
 }
 
+.icon {
+margin-bottom: 0px;
+vertical-align: middle;
+}
+
 .titlebar {
 height: 100px;
 background: #e9922a;
@@ -242,6 +247,34 @@ img[alt="Lily"]:hover {
 -o-transform: rotate(-3deg) scale(1.3) translate(-40px, -40px);
 transform: rotate(-3deg) scale(1.3) translate(-40px, -40px);
 -webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+}
+
+#prefix-editor-hotspot:hover {
+color: #e20000;
+cursor: pointer;
+}
+
+#simplemodal-overlay {
+background-color:#000;
+}
+
+#simplemodal-container {
+background-color: #333; 
+color: #ddd; 
+border: 8px solid #444; 
+padding: 12px;
+}
+
+#prefix-editor a.modalCloseImg {
+	background:url(close.png) no-repeat; /* adjust url as required */
+	width:25px;
+	height:29px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-15px;
+	right:-18px;
+	cursor:pointer;
 }
 
 /* Layout for mobile version */
