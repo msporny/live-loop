@@ -202,8 +202,6 @@
             var prefix = $("#prefix-input").val();
             var resolved = $("#prefix-editor-lookup-result").text();
 
-            console.log(prefix, "=>", resolved);
-            
             if(prefix.length > 0 && resolved.length > 0)
             {
                // hide the dialog
